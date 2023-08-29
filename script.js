@@ -21,7 +21,7 @@ searchButton.addEventListener('click', async () => {
 
     try {
       lastRequestTime = currentTime;
-      const response = await fetch(`https://zillow-working-api.p.rapidapi.com/search/byaddress?query=${encodeURIComponent(address)}`, {
+      const response = await fetch(`https://zillow-working-api.p.rapidapi.com/byaddress?propertyaddress=${encodeURIComponent(address)}`, {
         method: 'GET',
         headers: {
           'X-RapidAPI-Key': 'b992a0a4c9mshe98194ed211e071p1a8a00jsn9be933e403ac',
@@ -41,9 +41,13 @@ searchButton.addEventListener('click', async () => {
 function displayResult(data) {
   console.log(data);
 
+  const result = data;
+
   resultContainer.innerHTML = `
     <h2>Property Information</h2>
-    <p>Address: ${data.address}</p>
-    <p>Area: ${data.area} sq ft</p>
+    <p>Address: ${result.PropertyAddress}</p>
+    <p>Area: ${result.Area}</p>
+    <p>Bedrooms: ${result.Bedrooms}</p>
+    <p>Bathrooms: ${result.Bathrooms}</p>
   `;
 }
