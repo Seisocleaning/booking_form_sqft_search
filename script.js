@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { default as axios } from 'https://cdn.skypack.dev/axios';
 
 document.addEventListener('DOMContentLoaded', () => {
   const searchButton = document.getElementById('searchButton');
