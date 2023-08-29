@@ -50,9 +50,9 @@ h1 {
 
 #searchButton {
   padding: 10px 20px;
-  background-color: #344067;
-  border: none;
-  color: white;
+  background-color: #fff;
+  border: 1px solid #000;
+  color: #000;
   cursor: pointer;
   border-radius: 4px;
   -webkit-font-smoothing: antialiased;
@@ -79,6 +79,13 @@ h1 {
   font-size: 16px;
 }
 
+#houseNumberInput {
+  padding: 10px;
+  width: 100%;
+  max-width: 25%;
+  font-size: 12px; /* Adjust font size */
+}
+
 @media (max-width: 768px) {
   .input-container {
     align-items: flex-start;
@@ -89,6 +96,6 @@ h1 {
   }
 
   #houseNumberInput {
-    max-width: 25%;
+    max-width: 100%;
   }
 }
