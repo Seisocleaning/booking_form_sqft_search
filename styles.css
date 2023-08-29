@@ -1,10 +1,10 @@
 :root {
-  --max-width: 375px; /* Adjusted to 375px */
+  --max-width: 375px;
 }
 
 body {
   font-family: "Inter", sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   color: #2c3345;
   margin: 0;
   padding: 0;
@@ -19,69 +19,89 @@ h1 {
 .result-container {
   max-width: var(--max-width);
   margin: 20px auto;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 3px;
-  background-color: #f9f9f9;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: background-color 0.15s;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  margin-top: 12px;
-  margin-bottom: 12px;
-  padding: 15px; /* Added padding to the entire widget */
 }
 
 .input-container {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   align-items: center;
   width: 100%;
 }
 
 .input-container input {
-  padding: 10px;
+  padding: 6px;
   flex: 1;
   border: 1px solid #ddd;
   border-radius: 3px;
 }
 
 #searchButton {
-  padding: 8px 20px;
+  padding: 6px 15px;
   background-color: #fff;
   border: 1px solid #000;
   color: #000;
   cursor: pointer;
   border-radius: 4px;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
   font-family: "Inter", sans-serif;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: normal;
   min-width: 64px;
   width: auto;
+  margin-right: 10px;
 }
 
 #propertyAddressInput {
   font-family: "Inter", sans-serif;
   flex: 1;
-  font-size: 13px; /* Slightly smaller font size */
+  font-size: 12px;
   color: #2c3345;
-  padding: 10px;
-  max-width: 65%; /* Adjusted to 65% */
+  padding: 6px;
   border: 1px solid #ddd;
   border-radius: 3px;
+  max-width: 70%;
+  margin-bottom: 5px;
 }
 
 #houseNumberInput {
-  padding: 10px;
+  padding: 6px;
   flex: 1;
   border: 1px solid #ddd;
   border-radius: 3px;
   width: auto;
+  font-size: 10px;
+  max-width: 40%; /* Allow house number to shrink in width */
+  margin-top: 5px; /* Added margin */
+}
+
+.property-container {
+  color: #2e6da4;
+  font-family: "Inter", sans-serif;
   font-size: 12px;
-  max-width: 35%; /* Adjusted to 35% */
+  font-weight: bold;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.result-container {
+  max-width: var(--max-width);
+  margin: 10px auto;
+  padding: 10px;
+  border: none;
+  text-align: center;
+  color: #2e6da4;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: transparent;
+  box-shadow: none;
 }
 
 @media (max-width: 768px) {
@@ -91,6 +111,11 @@ h1 {
   }
 
   #searchButton {
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-right: 0;
+  }
+
+  #houseNumberInput {
+    max-width: 100%; /* Allow house number to take full width */
   }
 }
