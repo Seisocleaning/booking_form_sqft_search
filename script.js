@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let fullAddress = propertyAddress;
     if (houseNumber.trim() !== '') {
-      fullAddress += ` | ${houseNumber}`;
+      fullAddress += ` #${houseNumber}`;
     }
 
     if (propertyAddress.trim() !== '') {
