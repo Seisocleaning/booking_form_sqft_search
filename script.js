@@ -1,14 +1,10 @@
-// Format user input to match the expected address structure
-function formatAddressInput(input) {
-  const cleanedInput = input.replace(/,\s*Canada$/, '');
-  const formattedInput = cleanedInput.replace(/\b\w+/g, match => match.charAt(0).toUpperCase() + match.slice(1).toLowerCase());
-  return formattedInput.trim();
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   const searchButton = document.getElementById('searchButton');
   const addressInput = document.getElementById('addressInput');
   const resultContainer = document.getElementById('resultContainer');
+
+  // Initialize Google Places Autocomplete
+  const autocomplete = new google.maps.places.Autocomplete(addressInput);
 
   searchButton.addEventListener('click', async () => {
     const userInput = addressInput.value;
@@ -41,5 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
       <p>Address: ${result.address}</p>
       <p>Area: ${result.area} sq ft</p>
     `;
+  }
+
+  function formatAddressInput(input) {
+    // You can customize this function to format the user input as needed
+    return input;
   }
 });
