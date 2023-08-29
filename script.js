@@ -45,7 +45,7 @@ function displayResult(result) {
   if (result && result.area) {
     resultContainer.innerHTML = `
       <h2>Property Information</h2>
-      <p>Area: ${result.area} sq ft</p>
+      <p>Area: ${result.area}</p>
     `;
   } else {
     resultContainer.innerHTML = 'No property information available.';
