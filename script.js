@@ -1,6 +1,8 @@
-const searchButton = document.getElementById('searchButton');
+// Initialize Google Places Autocomplete
 const addressInput = document.getElementById('addressInput');
-const resultContainer = document.getElementById('resultContainer');
+const autocomplete = new google.maps.places.Autocomplete(addressInput);
+
+// ... your existing code ...
 
 searchButton.addEventListener('click', async () => {
   const address = addressInput.value;
@@ -16,7 +18,6 @@ searchButton.addEventListener('click', async () => {
       });
 
       const data = await response.json();
-      console.log(data); // Log the response data to the console for inspection
       displayResult(data);
     } catch (error) {
       console.error(error);
@@ -26,7 +27,10 @@ searchButton.addEventListener('click', async () => {
 });
 
 function displayResult(data) {
-  const result = data.result; // Update this line based on the actual response structure
+  console.log(data); // Log the response data to the console for inspection
+
+  // Adjust the rest of your display logic based on the actual structure
+  const result = data.result;
 
   resultContainer.innerHTML = `
     <h2>Property Information</h2>
