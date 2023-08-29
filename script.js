@@ -3,9 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const addressInput = document.getElementById('addressInput');
   const resultContainer = document.getElementById('resultContainer');
 
-  // Initialize Google Places Autocomplete
-  const autocomplete = new google.maps.places.Autocomplete(addressInput);
-
   searchButton.addEventListener('click', async () => {
     const userInput = addressInput.value;
     const formattedAddress = formatAddressInput(userInput);
@@ -21,9 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         };
 
-        const response = await fetch(url, options);
-        const data = await response.json();
-        
+        const response = await axios(url, options);
+        const data = response.data;
+
         displayResult(data);
       } catch (error) {
         console.error(error);
@@ -34,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function displayResult(data) {
     // Your display result logic here
+    resultContainer.innerHTML = JSON.stringify(data, null, 2);
   }
 
   function formatAddressInput(input) {
