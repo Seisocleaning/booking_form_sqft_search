@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const data = await response.json();
+        console.log(data); // Log the API response for troubleshooting
         displayResult(data);
       } catch (error) {
         console.error(error);
