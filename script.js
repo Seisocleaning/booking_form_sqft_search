@@ -54,7 +54,10 @@ async function fetchPropertyInformation(address) {
 }
 
 function displayResult(data) {
-  const result = data.Results[0]; // Assuming you want to display the first result
+  console.log(data); // Log the response data to the console for inspection
+
+  // Assuming the address and area data are in the correct format
+  const result = data.Results[0];
 
   resultContainer.innerHTML = `
     <h2>Property Information</h2>
