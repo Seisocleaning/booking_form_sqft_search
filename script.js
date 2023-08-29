@@ -1,12 +1,7 @@
-import axios from 'axios';
-
 document.addEventListener('DOMContentLoaded', () => {
   const searchButton = document.getElementById('searchButton');
   const addressInput = document.getElementById('addressInput');
   const resultContainer = document.getElementById('resultContainer');
-
-  // Initialize Google Places Autocomplete
-  const autocomplete = new google.maps.places.Autocomplete(addressInput);
 
   searchButton.addEventListener('click', async () => {
     const userInput = addressInput.value;
@@ -34,13 +29,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function displayResult(data) {
-    if (data.Results && data.Results.length > 0) {
-      const result = data.Results[0];
+    resultContainer.innerHTML = ''; // Clear previous results
 
-      resultContainer.innerHTML = `
+    if (data.message === "200: Success" && data.propertyDetails) {
+      const property = data.propertyDetails;
+
+      resultContainer.innerHTML += `
         <h2>Property Information</h2>
-        <p>Address: ${result.address}</p>
-        <p>Area: ${result.area} sq ft</p>
+        <p>Address: ${property.address.streetAddress}, ${property.address.city}, ${property.address.state} ${property.address.zipcode}</p>
+        <p>Bedrooms: ${property.bedrooms}</p>
+        <p>Bathrooms: ${property.bathrooms}</p>
+        <p>Price: ${property.price} ${property.currency}</p>
+        <p>Year Built: ${property.yearBuilt}</p>
+        <p>Living Area: ${property.livingArea || property.livingAreaValue} ${property.livingAreaUnitsShort || property.livingAreaUnits}</p>
+        <p>Home Type: ${property.homeType}</p>
       `;
     } else {
       resultContainer.innerHTML = 'No property found.';
