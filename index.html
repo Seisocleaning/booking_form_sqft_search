@@ -3,12 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Property Search</title>
+  <title>Zillow API Example</title>
 </head>
 <body>
-  <input type="text" id="addressInput" placeholder="Enter address">
-  <button id="searchButton">Search</button>
+  <div>
+    <input type="text" id="addressInput" placeholder="Enter address">
+    <button id="searchButton">Search</button>
+  </div>
   <div id="resultContainer"></div>
-  <script type="module" src="script.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
