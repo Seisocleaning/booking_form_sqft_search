@@ -37,7 +37,7 @@ function performSearch(address) {
 
 async function fetchPropertyInformation(address) {
   try {
-    const response = await fetch(`https://zillow-working-api.p.rapidapi.com/byaddress?propertyaddress=${encodeURIComponent(address)}`, {
+    const response = await fetch(`https://zillow-working-api.p.rapidapi.com/search/byaddress?query=${encodeURIComponent(address)}`, {
       method: 'GET',
       headers: {
         'X-RapidAPI-Key': 'b992a0a4c9mshe98194ed211e071p1a8a00jsn9be933e403ac',
@@ -54,15 +54,11 @@ async function fetchPropertyInformation(address) {
 }
 
 function displayResult(data) {
-  console.log(data);
-
-  const result = data;
+  const result = data.Results[0]; // Assuming you want to display the first result
 
   resultContainer.innerHTML = `
     <h2>Property Information</h2>
-    <p>Address: ${result.PropertyAddress}</p>
-    <p>Area: ${result.Area}</p>
-    <p>Bedrooms: ${result.Bedrooms}</p>
-    <p>Bathrooms: ${result.Bathrooms}</p>
+    <p>Address: ${result.address}</p>
+    <p>Area: ${result.area} sq ft</p>
   `;
 }
