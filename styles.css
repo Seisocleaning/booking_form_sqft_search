@@ -1,4 +1,8 @@
 /* styles.css */
+:root {
+  --max-width: 600px;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -9,9 +13,14 @@ h1 {
   text-align: center;
 }
 
-.search-container {
-  text-align: center;
+.search-form {
+  max-width: var(--max-width);
   margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .input-container {
@@ -25,19 +34,17 @@ h1 {
 .input-container input {
   flex: 1;
   padding: 10px;
-  max-width: calc(75% - 10px); /* Adjust width and max-width as needed */
+  max-width: calc(75% - 10px);
   border: 1px solid #ddd;
   border-radius: 5px;
 }
 
 #addressInput {
-  width: 100%; /* Full width for address input */
-  max-width: 300px; /* Set a maximum width */
+  max-width: 100%;
 }
 
 #houseNumberInput {
-  width: auto; /* Let it adjust based on content */
-  max-width: 100px; /* Set a maximum width */
+  max-width: 100px;
 }
 
 #searchButton {
@@ -47,26 +54,6 @@ h1 {
   color: white;
   cursor: pointer;
   border-radius: 5px;
-}
-
-.property-container {
-  color: #2e6da4;
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  list-style: none;
-  box-sizing: border-box;
-  margin: 12px 4px;
-  border-radius: 3px;
-  position: relative;
-  width: 100%;
-  transition: background-color .15s;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  padding: 6px 12px;
-  margin-top: 12px;
-  margin-bottom: 12px;
-  z-index: 0;
 }
 
 .result-container {
