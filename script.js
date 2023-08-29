@@ -30,9 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function displayResult(data) {
     if (data && data.propertyDetails && data.propertyDetails.livingArea) {
       const livingArea = data.propertyDetails.livingArea;
-      resultContainer.innerHTML = `Total Home Sq. Ft.: ${livingArea}`;sf
+      resultContainer.innerHTML = `Total Home Sq. Ft.: ${livingArea} Sq. Ft.`;
     } else {
-      resultContainer.innerHTML = 'Home Sq. Ft. not found, search on Google for property sf and enter manually';
+      resultContainer.innerHTML = 'Total Home Sq. Ft. not found, please search on Google for and enter manually.';
     }
   }
 });
