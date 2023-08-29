@@ -2,7 +2,8 @@
 const addressInput = document.getElementById('addressInput');
 const autocomplete = new google.maps.places.Autocomplete(addressInput);
 
-// ... your existing code ...
+const searchButton = document.getElementById('searchButton');
+const resultContainer = document.getElementById('resultContainer');
 
 searchButton.addEventListener('click', async () => {
   const address = addressInput.value;
@@ -21,7 +22,7 @@ searchButton.addEventListener('click', async () => {
       displayResult(data);
     } catch (error) {
       console.error(error);
-      resultContainer.innerHTML = 'Error fetching data';
+      resultContainer.innerHTML = 'Error fetching data: ' + error.message;
     }
   }
 });
@@ -30,7 +31,7 @@ function displayResult(data) {
   console.log(data); // Log the response data to the console for inspection
 
   // Adjust the rest of your display logic based on the actual structure
-  const result = data.result;
+  const result = data; // Assuming the entire response is in the 'result' object
 
   resultContainer.innerHTML = `
     <h2>Property Information</h2>
