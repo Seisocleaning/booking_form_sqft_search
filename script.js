@@ -13,14 +13,14 @@ searchButton.addEventListener('click', async () => {
   if (address.trim() !== '') {
     const currentTime = new Date().getTime();
     const timeSinceLastRequest = currentTime - lastRequestTime;
-    
-    if (timeSinceLastRequest < 500) { // Ensure at least 500 milliseconds between requests (2 requests per second)
+
+    if (timeSinceLastRequest < 500) {
       resultContainer.innerHTML = 'Please wait a moment before making another request.';
       return;
     }
 
     try {
-      lastRequestTime = currentTime; // Update the last request time
+      lastRequestTime = currentTime;
       const response = await fetch(`https://zillow-working-api.p.rapidapi.com/search/byaddress?query=${encodeURIComponent(address)}`, {
         method: 'GET',
         headers: {
@@ -39,14 +39,11 @@ searchButton.addEventListener('click', async () => {
 });
 
 function displayResult(data) {
-  console.log(data); // Log the response data to the console for inspection
-
-  // Adjust the rest of your display logic based on the actual structure
-  const result = data; // Assuming the entire response is in the 'result' object
+  console.log(data);
 
   resultContainer.innerHTML = `
     <h2>Property Information</h2>
-    <p>Address: ${result.address}</p>
-    <p>Area: ${result.area} sq ft</p>
+    <p>Address: ${data.address}</p>
+    <p>Area: ${data.area} sq ft</p>
   `;
 }
