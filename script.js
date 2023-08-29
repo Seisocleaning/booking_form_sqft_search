@@ -4,7 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultContainer = document.getElementById('resultContainer');
 
   // Initialize Google Places Autocomplete
-  const autocomplete = new google.maps.places.Autocomplete(addressInput);
+  const autocomplete = new google.maps.places.Autocomplete(addressInput, {
+    types: ['geocode'] // Restrict to addresses
+  });
 
   searchButton.addEventListener('click', async () => {
     const userInput = addressInput.value;
@@ -34,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     resultContainer.innerHTML = `
       <h2>Property Information</h2>
-      <p>Address: ${result.address}</p>
+      <p>Address: ${result.addressStreet}</p>
       <p>Area: ${result.area} sq ft</p>
     `;
   }
