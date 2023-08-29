@@ -17,13 +17,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         const response = await fetch(url, options);
-        const result = await response.text();
-        console.log(result);
-        resultContainer.innerHTML = result; // Display the result
+        const data = await response.json(); // Parse JSON response
+        console.log(data);
+        displayResult(data); // Display the parsed result
       } catch (error) {
         console.error(error);
         resultContainer.innerHTML = 'Error fetching data: ' + error.message;
       }
     }
   });
+
+  function displayResult(data) {
+    // Format and display the result here
+    resultContainer.innerHTML = JSON.stringify(data, null, 2); // Display as formatted JSON
+  }
 });
