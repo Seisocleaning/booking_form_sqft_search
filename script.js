@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         };
 
-        const response = await axios(url, options);
-        const data = response.data;
+        const response = await fetch(url, options);
+        const result = await response.text();
 
-        displayResult(data);
+        displayResult(result);
       } catch (error) {
         console.error(error);
         resultContainer.innerHTML = 'Error fetching data: ' + error.message;
@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  function displayResult(data) {
+  function displayResult(result) {
     // Your display result logic here
-    resultContainer.innerHTML = JSON.stringify(data, null, 2);
+    resultContainer.innerHTML = result;
   }
 });
