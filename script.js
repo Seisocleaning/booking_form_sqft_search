@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const addressInput = document.getElementById('addressInput');
   const resultContainer = document.getElementById('resultContainer');
 
+  let map; // Declare map as a global variable
+
   // Initialize Google Places Autocomplete
-  const autocomplete = new google.maps.places.Autocomplete(addressInput, {
-    types: ['geocode'] // Restrict to addresses
-  });
+  const autocomplete = new google.maps.places.Autocomplete(addressInput);
 
   searchButton.addEventListener('click', async () => {
     const userInput = addressInput.value;
@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const data = await response.json();
-        console.log(data); // Log the API response for troubleshooting
         displayResult(data);
       } catch (error) {
         console.error(error);
@@ -33,21 +32,22 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function displayResult(data) {
-    if (data.Results && data.Results.length > 0) {
-      const result = data.Results[0];
+    const result = data.Results[0];
 
-      resultContainer.innerHTML = `
-        <h2>Property Information</h2>
-        <p>Address: ${result.addressStreet}</p>
-        <p>Area: ${result.area} sq ft</p>
-      `;
-    } else {
-      resultContainer.innerHTML = 'No property found.';
-    }
+    resultContainer.innerHTML = `
+      <h2>Property Information</h2>
+      <p>Address: ${result.address}</p>
+      <p>Area: ${result.area} sq ft</p>
+    `;
+
+    // Initialize Google Map
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: { lat: result.latLong.lat, lng: result.latLong.lon },
+      zoom: 15
+    });
   }
 
   function formatAddressInput(input) {
-    // You can customize this function to format the user input as needed
-    return input;
+    return input; // You can customize this function if needed
   }
 });
