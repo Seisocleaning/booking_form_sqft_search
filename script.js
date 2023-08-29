@@ -1,13 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
   const searchButton = document.getElementById('searchButton');
   const propertyAddressInput = document.getElementById('propertyAddressInput');
+  const houseNumberInput = document.getElementById('houseNumberInput');
   const resultContainer = document.getElementById('resultContainer');
 
   searchButton.addEventListener('click', async () => {
     const propertyAddress = propertyAddressInput.value;
+    const houseNumber = houseNumberInput.value;
+
+    let fullAddress = propertyAddress;
+    if (houseNumber.trim() !== '') {
+      fullAddress += ` | ${houseNumber}`;
+    }
+
     if (propertyAddress.trim() !== '') {
       try {
-        const url = `https://zillow-working-api.p.rapidapi.com/client/byaddress?propertyaddress=${encodeURIComponent(propertyAddress)}`;
+        resultContainer.innerHTML = 'Loading...';
+
+        const url = `https://zillow-working-api.p.rapidapi.com/client/byaddress?propertyaddress=${encodeURIComponent(fullAddress)}`;
         const options = {
           method: 'GET',
           headers: {
@@ -32,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const livingArea = data.propertyDetails.livingArea;
       resultContainer.innerHTML = `Total Home Sq. Ft.: ${livingArea} Sq. Ft.`;
     } else {
-      resultContainer.innerHTML = 'Total Home Sq. Ft. not found, please search on Google for and enter manually.';
+      resultContainer.innerHTML = 'Total Home Sq. Ft. not found, please search on Google and enter Sq. Ft. manually.';
     }
   }
 });
