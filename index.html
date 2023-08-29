@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Property Search</title>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkWELYk2yzNmsISJeBXg4OHlw885Usl9k&libraries=places"></script>
+  <!-- Add meta tags, title, and CSS if needed -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkWELYk2yzNmsISJeBXg4OHlw885Usl9k&libraries=places&callback=initMap" async defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
   <input type="text" id="addressInput" placeholder="Enter address">
   <button id="searchButton">Search</button>
   <div id="resultContainer"></div>
+  <div id="map" style="height: 400px;"></div>
 </body>
 </html>
