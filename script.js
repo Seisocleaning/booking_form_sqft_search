@@ -42,9 +42,12 @@ searchButton.addEventListener('click', async () => {
 function displayResult(result) {
   console.log(result); // Log the response data to the console for inspection
 
-  // Display the area value only
-  resultContainer.innerHTML = `
-    <h2>Property Information</h2>
-    <p>Area: ${result.area} sq ft</p>
-  `;
+  if (result && result.area) {
+    resultContainer.innerHTML = `
+      <h2>Property Information</h2>
+      <p>Area: ${result.area} sq ft</p>
+    `;
+  } else {
+    resultContainer.innerHTML = 'No property information available.';
+  }
 }
