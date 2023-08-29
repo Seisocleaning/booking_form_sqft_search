@@ -32,13 +32,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function displayResult(data) {
-    const result = data.Results[0]; // Use "Results" instead of "results" based on the example response
+    if (data.Results && data.Results.length > 0) {
+      const result = data.Results[0];
 
-    resultContainer.innerHTML = `
-      <h2>Property Information</h2>
-      <p>Address: ${result.addressStreet}</p>
-      <p>Area: ${result.area} sq ft</p>
-    `;
+      resultContainer.innerHTML = `
+        <h2>Property Information</h2>
+        <p>Address: ${result.addressStreet}</p>
+        <p>Area: ${result.area} sq ft</p>
+      `;
+    } else {
+      resultContainer.innerHTML = 'No property found.';
+    }
   }
 
   function formatAddressInput(input) {
