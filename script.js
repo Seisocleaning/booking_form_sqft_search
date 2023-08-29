@@ -59,9 +59,9 @@ function displayResult(data) {
   // Assuming the address and area data are in the correct format
   const result = data.Results[0];
 
+  // Display the area value only
   resultContainer.innerHTML = `
     <h2>Property Information</h2>
-    <p>Address: ${result.address}</p>
     <p>Area: ${result.area} sqft</p>
   `;
 }
