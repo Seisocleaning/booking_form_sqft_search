@@ -59,6 +59,6 @@ function displayResult(data) {
   resultContainer.innerHTML = `
     <h2>Property Information</h2>
     <p>Address: ${result.address}</p>
-    <p>Area: ${result.area} sq ft</p>
+    <p>Area: ${result.area} sqft</p>
   `;
 }
