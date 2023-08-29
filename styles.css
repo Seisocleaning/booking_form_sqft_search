@@ -1,10 +1,11 @@
-/* styles.css */
 :root {
   --max-width: 600px;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: #2c3345;
   margin: 0;
   padding: 0;
 }
@@ -13,47 +14,55 @@ h1 {
   text-align: center;
 }
 
-.search-form {
+.search-form,
+.github-container {
   max-width: var(--max-width);
   margin: 20px auto;
   padding: 20px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 3px;
   background-color: #f9f9f9;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.15s;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 6px 12px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 .input-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 10px;
+  width: 100%;
 }
 
 .input-container input {
-  flex: 1;
   padding: 10px;
-  max-width: calc(75% - 10px);
+  width: 100%;
+  max-width: 75%;
   border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-#addressInput {
-  max-width: 100%;
-}
-
-#houseNumberInput {
-  max-width: 50px;
+  border-radius: 3px;
 }
 
 #searchButton {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #344067;
   border: none;
   color: white;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 4px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  min-width: 128px;
+  width: auto;
+  margin-left: 10px;
 }
 
 .result-container {
@@ -61,7 +70,7 @@ h1 {
   margin: 20px auto;
   padding: 20px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 3px;
   background-color: #f9f9f9;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -72,11 +81,14 @@ h1 {
 
 @media (max-width: 768px) {
   .input-container {
-    flex-direction: column;
     align-items: flex-start;
   }
 
-  .input-container input {
-    max-width: 100%;
+  #addressInput {
+    max-width: 75%;
+  }
+
+  #houseNumberInput {
+    max-width: 25%;
   }
 }
