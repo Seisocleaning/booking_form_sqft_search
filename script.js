@@ -16,6 +16,7 @@ searchButton.addEventListener('click', async () => {
       });
 
       const data = await response.json();
+      console.log(data); // Log the response data to the console for inspection
       displayResult(data);
     } catch (error) {
       console.error(error);
@@ -25,7 +26,7 @@ searchButton.addEventListener('click', async () => {
 });
 
 function displayResult(data) {
-  const result = data; // Assuming the entire response is in the 'result' object
+  const result = data.result; // Update this line based on the actual response structure
 
   resultContainer.innerHTML = `
     <h2>Property Information</h2>
