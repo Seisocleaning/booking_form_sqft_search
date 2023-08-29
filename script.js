@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   const searchButton = document.getElementById('searchButton');
-  const propertyAddressInput = document.getElementById('propertyAddressInput');
-  const resultContainer = document.getElementById('resultContainer');
+  const propertyAddressInput = document.getElementById('propertyaddress');
+  const resultContainer = document.getElementById('propertyaddress');
 
   searchButton.addEventListener('click', async () => {
-    const propertyAddress = propertyAddressInput.value;
+    const propertyAddress = propertyaddress.value;
     if (propertyAddress.trim() !== '') {
       try {
         const url = `https://zillow-working-api.p.rapidapi.com/client/byaddress?propertyaddress=${encodeURIComponent(propertyAddress)}`;
