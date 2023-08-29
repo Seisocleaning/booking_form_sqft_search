@@ -28,9 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function displayResult(data) {
-  if (data && data.livingArea) {
-    resultContainer.innerHTML = `Living Area: ${data.livingArea}`;
-  } else {
-    resultContainer.innerHTML = 'Living Area not available.';
+    if (data && data.livingArea) {
+      resultContainer.innerHTML = `Living Area: ${data.livingArea}`;
+    } else {
+      resultContainer.innerHTML = 'Living Area not available.';
+    }
   }
-}
+});
