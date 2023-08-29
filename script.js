@@ -1,9 +1,9 @@
+import axios from 'axios';
+
 document.addEventListener('DOMContentLoaded', () => {
   const searchButton = document.getElementById('searchButton');
   const addressInput = document.getElementById('addressInput');
   const resultContainer = document.getElementById('resultContainer');
-
-  let map; // Declare map as a global variable
 
   // Initialize Google Places Autocomplete
   const autocomplete = new google.maps.places.Autocomplete(addressInput);
@@ -14,15 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (formattedAddress.trim() !== '') {
       try {
-        const response = await fetch(`https://zillow-working-api.p.rapidapi.com/search/byaddress?query=${encodeURIComponent(formattedAddress)}`, {
-          method: 'GET',
+        const response = await axios.get('https://zillow-working-api.p.rapidapi.com/client/byaddress', {
+          params: {
+            propertyaddress: formattedAddress
+          },
           headers: {
             'X-RapidAPI-Key': 'b992a0a4c9mshe98194ed211e071p1a8a00jsn9be933e403ac',
             'X-RapidAPI-Host': 'zillow-working-api.p.rapidapi.com'
           }
         });
 
-        const data = await response.json();
+        const data = response.data;
         displayResult(data);
       } catch (error) {
         console.error(error);
@@ -32,22 +34,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function displayResult(data) {
-    const result = data.Results[0];
+    if (data.Results && data.Results.length > 0) {
+      const result = data.Results[0];
 
-    resultContainer.innerHTML = `
-      <h2>Property Information</h2>
-      <p>Address: ${result.address}</p>
-      <p>Area: ${result.area} sq ft</p>
-    `;
-
-    // Initialize Google Map
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: { lat: result.latLong.lat, lng: result.latLong.lon },
-      zoom: 15
-    });
+      resultContainer.innerHTML = `
+        <h2>Property Information</h2>
+        <p>Address: ${result.address}</p>
+        <p>Area: ${result.area} sq ft</p>
+      `;
+    } else {
+      resultContainer.innerHTML = 'No property found.';
+    }
   }
 
   function formatAddressInput(input) {
-    return input; // You can customize this function if needed
+    // You can customize this function to format the user input as needed
+    return input;
   }
 });
