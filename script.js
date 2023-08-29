@@ -1,15 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
   const searchButton = document.getElementById('searchButton');
-  const addressInput = document.getElementById('addressInput');
+  const propertyAddressInput = document.getElementById('propertyAddressInput');
   const resultContainer = document.getElementById('resultContainer');
 
   searchButton.addEventListener('click', async () => {
-    const userInput = addressInput.value;
-    const formattedAddress = formatAddressInput(userInput);
-
-    if (formattedAddress.trim() !== '') {
+    const propertyAddress = propertyAddressInput.value;
+    if (propertyAddress.trim() !== '') {
       try {
-        const url = `https://zillow-working-api.p.rapidapi.com/client/byaddress?propertyaddress=${encodeURIComponent(formattedAddress)}`;
+        const url = `https://zillow-working-api.p.rapidapi.com/client/byaddress?propertyaddress=${encodeURIComponent(propertyAddress)}`;
         const options = {
           method: 'GET',
           headers: {
@@ -32,10 +30,5 @@ document.addEventListener('DOMContentLoaded', () => {
   function displayResult(data) {
     // Your display result logic here
     resultContainer.innerHTML = JSON.stringify(data, null, 2);
-  }
-
-  function formatAddressInput(input) {
-    // Your format address logic here
-    return input;
   }
 });
