@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (propertyAddress.includes('#')) {
         unitNumberContainer.style.display = 'block';
         return;
+      }
       try {
         const url = `https://zillow-working-api.p.rapidapi.com/client/byaddress?propertyaddress=${encodeURIComponent(propertyAddress)}`;
         const options = {
