@@ -5,11 +5,22 @@ const autocomplete = new google.maps.places.Autocomplete(addressInput);
 const searchButton = document.getElementById('searchButton');
 const resultContainer = document.getElementById('resultContainer');
 
+let lastRequestTime = 0; // Store the timestamp of the last request
+
 searchButton.addEventListener('click', async () => {
   const address = addressInput.value;
 
   if (address.trim() !== '') {
+    const currentTime = new Date().getTime();
+    const timeSinceLastRequest = currentTime - lastRequestTime;
+    
+    if (timeSinceLastRequest < 500) { // Ensure at least 500 milliseconds between requests (2 requests per second)
+      resultContainer.innerHTML = 'Please wait a moment before making another request.';
+      return;
+    }
+
     try {
+      lastRequestTime = currentTime; // Update the last request time
       const response = await fetch(`https://zillow-working-api.p.rapidapi.com/search/byaddress?query=${encodeURIComponent(address)}`, {
         method: 'GET',
         headers: {
