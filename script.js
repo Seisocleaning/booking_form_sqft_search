@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (propertyAddress.trim() !== '') {
       try {
-        resultContainer.innerHTML = 'Loading...';
+        resultContainer.innerHTML = '<div class="property-container">Loading...</div>';
 
         const url = `https://zillow-working-api.p.rapidapi.com/client/byaddress?propertyaddress=${encodeURIComponent(fullAddress)}`;
         const options = {
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         displayResult(data);
       } catch (error) {
         console.error(error);
-        resultContainer.innerHTML = 'Error fetching data: ' + error.message;
+        resultContainer.innerHTML = `<div class="property-container">Error fetching data: ${error.message}</div>`;
       }
     }
   });
@@ -40,9 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function displayResult(data) {
     if (data && data.propertyDetails && data.propertyDetails.livingArea) {
       const livingArea = data.propertyDetails.livingArea;
-      resultContainer.innerHTML = `Total Home Sq. Ft.: ${livingArea} Sq. Ft.`;
+      resultContainer.innerHTML = `<div class="property-container">Total Home Sq. Ft.: ${livingArea} Sq. Ft.</div>`;
     } else {
-      resultContainer.innerHTML = 'Total Home Sq. Ft. not found, please search on Google and enter Sq. Ft. manually.';
+      resultContainer.innerHTML = `<div class="property-container">Total Home Sq. Ft. not found, please search on Google for and enter manually.</div>`;
     }
   }
 });
